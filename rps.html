@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="target" placeholder="Enter target matches">
+    <button onclick="saveData()">Set Target</button>
+    <div class="button-row">
+        <button class="increment" onclick="player('Rock')" >🗿</button>
+        <button class="increment" onclick="player('Paper')" >📄</button>
+        <button class="increment" onclick="player('Scissor')" >✂️</button>
+        <button class="decrement" onclick="resetscore()" >Reset</button>    </div>
+    <div class="ranking">
+        <h2>
+            <div id="computer">
+                Computer:<p></p>
+            </div>
+            <div id="player">
+                Player:
+            </div>
+            <div id="tie">
+                Tie:
+            </div>
+        </h2>
+    </div>
+</body>
+<script>console.log(3+8);
+    let a=0;
+    let playermove=0;
+    let computermove=0;
+    let tiematch=0;
+    let matchs=0;
+    let target = 0; 
+
+    function saveData() {
+        const inputValue = document.getElementById("target").value;    
+        target = Number(inputValue);
+        
+        if(target > 0) {
+            alert(`Target set to ${target} matches!`);
+            resetscore(); // Resets stats to begin a fresh run for the new target
+        }
+    }
+    function computerMove(){
+        
+        const cmove=Math.random();
+        if(cmove>=0 && cmove<1/3){
+            return "Rock";
+        }
+        else if(cmove>=1/3 && cmove<2/3){
+            return "Scissor";
+        }
+        else if(cmove>=2/3 && cmove<1){
+            return "Paper";
+        } 
+    }
+    function player(move){
+        const cmove=computerMove();
+        matchs++;
+        var res="";
+        if(move==='Rock'){
+            if(cmove==="Rock"){
+                res="Tie";
+            }
+            else if(cmove==="Scissor"){
+                res="You Win";
+            }
+            else if(cmove==="Paper"){
+                res="You Lost";
+            }
+        }
+        else if(move==='Scissor'){
+            if(cmove==="Scissor"){
+                res="Tie";
+            }
+            else if(cmove==="Paper"){
+                res=("You Win");
+            }
+            else  if(cmove==="Rock"){
+                res="You Lost";
+            }
+        }
+        else if(move==='Paper'){
+            if(cmove==="Paper"){
+                res=("Tie");
+            }
+            else if(cmove==='Scissor'){
+                res=("You Lost");
+            }
+            else  if(cmove==="Rock"){
+                res="You Win";
+            }
+        }
+        if(res==="You Win"){
+            playermove++;
+        }
+        else if(res==="You Lost"){
+            computermove++;
+        }
+        else{
+            tiematch++;
+        }
+        
+        //alert(`Your choice :${move}\nComputer choice : ${cmove}\nResult${res}`);
+        document.getElementById('computer').innerHTML = `Computer: ${computermove}`;
+        document.getElementById('player').innerHTML = `Player: ${playermove}`;
+        document.getElementById('tie').innerHTML=`Tie:${tiematch}`;
+        console.log("Computer choice:", cmove);
+        console.log("Result:", res);
+        console.log("Computer Score:", computermove);
+        console.log("Player Score:", playermove);
+        console.log("Matches:",matchs);
+        
+        if(target>0 && matchs===(target)){
+            
+            //pop up the winner or losser
+            setTimeout(()=>{if(playermove > computermove) {
+                alert(`🎉 Game Over! You win the series!\nFinal Score - Player: ${playermove} | Computer: ${computermove}`);
+            } else if(computermove > playermove) {
+                alert(`😢 Game Over! You lost the series!\nFinal Score - Player: ${playermove} | Computer: ${computermove}`);
+            } else {
+                alert(`🤝 Game Over! It's an overall Tie series!\nFinal Score - Player: ${playermove} | Computer: ${computermove}`);
+            }
+            resetscore();
+        },50);
+        }
+    }
+     
+    function resetscore(){
+        playermove=0;
+        computermove=0;
+        tiematch=0;
+        matchs=0;
+        document.getElementById('computer').innerHTML=`Computer : ${computermove}`;
+        document.getElementById('player').innerHTML=`Player : ${playermove}`;
+        document.getElementById('tie').innerHTML=`Tie : ${tiematch}`;
+        
+    }
+</script>
+</html>

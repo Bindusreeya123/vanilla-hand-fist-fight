@@ -1,0 +1,79 @@
+body{
+    background-color: #bccad6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.increment{
+    border-radius: 80%;
+    height: 100px;
+    width: 100px;
+    text-size-adjust: 50%;
+    font-size: 32px;
+    background-color:#daebe8;
+    margin: 20px;
+    align-items: center;
+    cursor: pointer;
+}
+.decrement{
+    text-size-adjust: 20%;
+    font-size: 16px;
+    background-color:#daebe8;
+    cursor: pointer;
+}
+.ranking{
+    height: 370px;
+    width: 400px;
+    background-color: #667292;
+    margin: 20px;
+    border:2px solid rgb(12, 12, 12);
+    border-radius: 20px;
+}
+#computer{
+    height: 90px;
+    width: 380px;
+    border: 2px solid beige;
+    background-color :#daebe8;
+    margin-left: 10px;
+    margin-top:25px;
+    text-align: center;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#player{
+    height: 90px;
+    width: 380px;
+    background-color:#daebe8;
+    border-radius: 20px;
+    border: 2px solid beige;
+    margin-left: 10px;
+    margin-top:20px;
+    border-color:2px rgb(12, 12, 12);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tie{
+    height: 90px;
+    width: 380px;
+    background-color:#daebe8;
+    border-radius: 20px;
+    border: 2px solid beige;
+    margin-left: 10px;
+    margin-top:20px;
+    border-color:2px solid rgb(12, 12, 12);
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
